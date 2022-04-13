@@ -1,0 +1,49 @@
+{% extends 'loanapp/base.html' %}
+{% block title%}
+    Change Password
+{% endblock title %}
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <small
+            {% if  message.tags %} class="{{ messsage.tags }}"{% endif %}>
+                {{ message }}
+            </small>
+        {% endfor %}
+    {% endif %}
+    <div class="form-group">
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <fielset class="form-group">
+                <legend class="border-bottom mb-4">Change Password From Here</legend>
+                {% comment %}{{ form.as_p }}{% endcomment %}
+                {%for fm in form %}
+                    {{ fm.label_tag }}{{ fm }}{{ fm.errors|striptags }}<br><br>
+                {% endfor %}
+
+            </fielset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit" value="Save">
+                    Change
+                </button>
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Wanna go Profile Page??<a href="{% url 'profile' %}" class="ml-2">Profile</a>
+                </small>
+
+            </div>
+         <div class="border-top pt-3">
+                <small class="text-muted">
+                    Wanna Log Out??<a href="{% url 'logout' %}" class="ml-2">Logout</a>
+                </small>
+            </div>
+        </form>
+    </div>
+
+{% endblock body %}

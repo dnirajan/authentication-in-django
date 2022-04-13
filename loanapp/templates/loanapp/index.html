@@ -1,0 +1,41 @@
+{% extends 'loanapp/base.html' %}
+{% load static %}
+{% block title %}
+Home Page
+{% endblock %}
+{% block body %}
+    <div class="container-fluid px-0">
+    <img src="{% static 'img/loan.png' %}" height="500"  width=100% alt="image">
+</div>
+    <div class="container py-3 px-4"style="background-color: beige">
+    <h3>You can contact us by filling following form...</h3>
+        <form class="row g-3" method="post" action="#">
+            {% csrf_token %}
+            <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Ram Thapa">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Amount you need???</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="30,00,000">
+          </div>
+            <div class="col-12">
+            <label for="phone" class="form-label">Period of Time</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter year: 1,2,3">
+          </div>
+
+          <div class="col-12">
+            <label for="address" class="form-label">Interest</label>
+            <input type="text" class="form-control" id="address" name="address" >
+          </div>
+            <div class="col-12">
+            <label for="address" class="form-label">Total Money with interest</label>
+            <input type="text" class="form-control" id="address" name="address">
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+          </div>
+        </form>
+    </div>
+{% endblock %}

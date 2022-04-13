@@ -1,0 +1,19 @@
+{% extends 'loanapp/base.html' %}
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {{ form.as_p }}
+            <input type="submit" value="Login">
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't Have an Account??<a href="{% url 'register' %}" class="ml-2">Register</a>
+            </small>
+
+        </div>
+    </form>
+{% endblock body %}

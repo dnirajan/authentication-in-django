@@ -1,0 +1,44 @@
+{% extends 'loanapp/base.html' %}
+{% block title%}
+    Registration
+{% endblock title %}
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <small
+            {% if  message.tags %} class="{{ messsage.tags }}"{% endif %}>
+                {{ message }}
+            </small>
+        {% endfor %}
+    {% endif %}
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <fielset class="form-group">
+                <legend class="border-bottom mb-4">Join From Here</legend>
+                {% comment %}{{ form.as_p }}{% endcomment %}
+                {%for fm in form %}
+                    {{ fm.label_tag }}{{ fm }}{{ fm.errors|striptags }}<br><br>
+                {% endfor %}
+
+            </fielset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    SignUp
+                </button>
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have an Account??<a href="{% url 'login' %}" class="ml-2">LogIn</a>
+                </small>
+
+            </div>
+        </form>
+    </div>
+
+{% endblock body %}

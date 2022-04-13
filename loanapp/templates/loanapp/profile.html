@@ -1,0 +1,52 @@
+{% extends 'loanapp/base.html' %}
+{% block title%}
+    Profile
+{% endblock title %}
+{% block body %}
+    {% for message in messages %}
+            <small
+            {% if  message.tags %} class="{{ messsage.tags }}"{% endif %}>
+                {{ message }}
+            </small>
+        {% endfor %}
+    <h2>Welcome here</h2>
+    <div>
+        <table style="border: 1px solid black" >
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Date Of Birth</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        {% for d in data %}
+            <tr>
+                <td>{{d.name}}</td>
+                <td>{{d.address}}</td>
+                <td>{{d.dob}}</td>
+                <td>{{d.mobile}}</td>
+                <td>{{d.email}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </div>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <small
+            {% if  message.tags %} class="{{ messsage.tags }}"{% endif %}>
+                {{ message }}
+            </small>
+        {% endfor %}
+    {% endif %}
+
+
+    <div class="form-group">
+        <a href="{% url 'login' %}">Logout</a>
+    </div>
+    <div class="form-group">
+        <a href="{% url 'changepass' %}">Change Password</a>
+    </div>
+{% endblock body %}
